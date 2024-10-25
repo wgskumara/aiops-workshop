@@ -1,0 +1,15 @@
+---
+- name: Manage Tomcat Server on EC2 Instances
+  hosts: Tomcat_Servers
+  become: true
+  tasks:
+    - name: Start Tomcat service
+      ansible.builtin.service:
+        name: tomcat
+        state: started
+      register: tomcat_start_result
+
+    - name: Check if Tomcat started successfully
+      ansible.builtin.debug:
+        msg: "Tomcat service started successfully"
+      when: tomcat_start_result.changed
