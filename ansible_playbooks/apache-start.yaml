@@ -1,6 +1,6 @@
 ---
 - name: Start Apache on EC2 Web Servers
-  hosts: all
+  hosts: Web_Servers
   become: true
   tasks:
   - name: Start Apache service

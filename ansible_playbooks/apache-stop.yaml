@@ -1,9 +1,15 @@
 ---
-- name: Deploy Apache on EC2 Web Servers
-  hosts: all
+- name: Stop Apache on EC2 Web Servers
+  hosts: Web_Servers
   become: true
   tasks:
-  - name: Install apache is at the latest version
-    ansible.builtin.yum:
-      name: httpd
-      state: latest      
+    - name: Stop Apache service
+      ansible.builtin.service:
+        name: httpd
+        state: stopped
+      register: service_stop_result
+
+    - name: Check if Apache stopped successfully
+      ansible.builtin.debug:
+        msg: "Apache service stopped successfully"
+      when: service_stop_result.changed

@@ -1,6 +1,6 @@
 ---
 - name: Deploy Apache on EC2 Web Servers
-  hosts: all
+  hosts: Web_Servers
   become: true
   tasks:
   - name: Install apache is at the latest version
