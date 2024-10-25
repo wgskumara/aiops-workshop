@@ -1,0 +1,9 @@
+---
+- name: Deploy Apache on EC2 Web Servers
+  hosts: all
+  become: true
+  tasks:
+  - name: Install apache is at the latest version
+    ansible.builtin.yum:
+      name: httpd
+      state: latest      

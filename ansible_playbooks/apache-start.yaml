@@ -1,0 +1,9 @@
+---
+- name: Start Apache on EC2 Web Servers
+  hosts: all
+  become: true
+  tasks:
+  - name: Start Apache service
+    ansible.builtin.service:
+      name: httpd
+      state: started

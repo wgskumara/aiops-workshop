@@ -1,10 +1,9 @@
 ---
-- hosts: all
-
+- name: Upgrade packages on EC2 Servers
+  hosts: all
   become: true
-
   tasks:
-    - name: Yum Package Updater
-      yum:
-        upgrade: yes
-        update_cache: yes
+  - name: Upgrade all packages
+    ansible.builtin.yum:
+      name: '*'
+      state: latest      
