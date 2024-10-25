@@ -1,0 +1,10 @@
+---
+- hosts: all
+
+  become: true
+
+  tasks:
+    - name: Yum Package Updater
+      yum:
+        upgrade: yes
+        update_cache: yes
