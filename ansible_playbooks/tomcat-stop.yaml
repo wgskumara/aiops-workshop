@@ -1,15 +1,2 @@
----
-- name: Manage Tomcat Server on EC2 Instances
-  hosts: Tomcat_Servers
-  become: true
-  tasks:
-    - name: Stop Tomcat service
-      ansible.builtin.service:
-        name: tomcat
-        state: stopped
-      register: tomcat_stop_result
-
-    - name: Check if Tomcat stopped successfully
-      ansible.builtin.debug:
-        msg: "Tomcat service stopped successfully"
-      when: tomcat_stop_result.changed
+#!/bin/bash
+sh /opt/apache-tomcat-10.1.31/bin/shutdown.sh
