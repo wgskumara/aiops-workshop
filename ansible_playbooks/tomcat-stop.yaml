@@ -1,0 +1,16 @@
+---
+- name: Stop Tomcat Server
+  hosts: Tomcat_Servers  
+  become: true
+  tasks:
+    - name: Stop Tomcat service
+      ansible.builtin.command:
+        cmd: "{{ item }}"
+      loop:
+        - "/opt/apache-tomcat-10.1.31/bin/shutdown.sh" 
+      register: shutdown_output
+      ignore_errors: true  
+
+    - name: Display shutdown output
+      debug:
+        var: shutdown_output.stdout

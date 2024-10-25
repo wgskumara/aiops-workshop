@@ -1,0 +1,14 @@
+---
+- name: Start Tomcat on Remote Servers
+  hosts: Tomcat_Servers  
+  become: true           
+  tasks:
+    - name: Ensure Tomcat is started
+      command: "/opt/apache-tomcat-10.1.31/bin/startup.sh"
+      args:
+        chdir: "/opt/apache-tomcat-10.1.31/bin"  
+      register: startup_result
+
+    - name: Print startup result
+      debug:
+        var: startup_result.stdout  
