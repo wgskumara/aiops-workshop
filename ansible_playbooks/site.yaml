@@ -2,6 +2,7 @@
 - hosts: all
   become: true
   tasks:
-    - name: Print OS info
-      ansible.builtin.package:
-        name: apache2
+  - name: Deploy apache is at the latest version
+    ansible.builtin.yum:
+      name: httpd
+      state: latest      
